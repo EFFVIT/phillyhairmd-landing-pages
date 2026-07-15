@@ -315,7 +315,7 @@ export default function AlmaTedLP({ heroFormId, bottomFormId }: Props) {
           <h2 style={{ fontSize: 'clamp(22px, 2.8vw, 30px)', fontWeight: 800, color: HEADING, textAlign: 'center', margin: '0 0 40px' }}>
             Care Led by Licensed Medical Professionals
           </h2>
-          <div className="three-col" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 40 }}>
+          <div className="three-col">
             {[
               {
                 icon: (
@@ -450,7 +450,7 @@ export default function AlmaTedLP({ heroFormId, bottomFormId }: Props) {
       {/* Footer */}
       <footer style={{ background: '#fff', borderTop: '1px solid #E5E7EB', padding: '40px 24px 24px' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: 48, marginBottom: 28, alignItems: 'start' }}>
+          <div className="footer-grid" style={{ marginBottom: 28 }}>
             <div>
               <p style={{ fontSize: 12, color: '#6B7280', lineHeight: 1.65, margin: '0 0 8px', maxWidth: 560 }}>
                 This service is provided in-office by licensed medical professionals. This non-invasive service is designed to support scalp health and address concerns related to hair thinning. Individual experiences may vary. A consultation is required to determine suitability.

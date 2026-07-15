@@ -129,12 +129,15 @@ export default function AlmaTedMetaLP({ heroFormId, bottomFormId }: Props) {
 
             {/* Trust badges */}
             <div className="trust-grid" style={{ marginBottom: 32 }}>
-              {['Non-surgical', 'In-office treatment', 'Men & women', 'Medical professionals'].map(item => (
-                <div key={item} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 32 32" fill="none">
-                    <path d="M27 6L12 21L5 14" stroke={BLUE} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  <span style={{ fontSize: 14, color: BODY }}>{item}</span>
+              {[
+                { label: 'Non-surgical', icon: 'Icon-3.png' },
+                { label: 'In-office treatment', icon: 'Icon-1-2.png' },
+                { label: 'Men & women', icon: 'Icon-2-1.png' },
+                { label: 'Medical professionals', icon: 'Icon-3-1.png' },
+              ].map(({ label, icon }) => (
+                <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <img src={`https://start.phillyhairmd.com/wp-content/uploads/2026/02/${icon}`} alt="" width={32} height={32} />
+                  <span style={{ fontSize: 14, color: BODY }}>{label}</span>
                 </div>
               ))}
             </div>
@@ -230,24 +233,50 @@ export default function AlmaTedMetaLP({ heroFormId, bottomFormId }: Props) {
           </h2>
           <div className="three-col" style={{ marginBottom: 24 }}>
             {[
-              { title: 'Ultrasound Energy', desc: 'Creates temporary micro-channels in the scalp' },
-              { title: 'Air Pressure Delivery', desc: 'Delivers the hair growth serum' },
-              { title: 'Follicle Stimulation', desc: 'Stimulates thicker, healthier hair growth' },
-            ].map(({ title, desc }, i) => (
+              {
+                title: 'Ultrasound Energy', desc: 'Creates temporary micro-channels in the scalp',
+                icon: (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+                    <path d="M0 40C0 17.9086 17.9086 0 40 0C62.0914 0 80 17.9086 80 40C80 62.0914 62.0914 80 40 80C17.9086 80 0 62.0914 0 40Z" fill="#164996" />
+                    <path d="M23.3333 29.9999C24.3333 30.8333 25.3333 31.6666 27.5 31.6666C31.6667 31.6666 31.6667 28.3333 35.8333 28.3333C40.1667 28.3333 39.8333 31.6666 44.1667 31.6666C48.3333 31.6666 48.3333 28.3333 52.5 28.3333C54.6667 28.3333 55.6667 29.1666 56.6667 29.9999" stroke="white" strokeWidth="3.33333" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M23.3333 39.9999C24.3333 40.8333 25.3333 41.6666 27.5 41.6666C31.6667 41.6666 31.6667 38.3333 35.8333 38.3333C40.1667 38.3333 39.8333 41.6666 44.1667 41.6666C48.3333 41.6666 48.3333 38.3333 52.5 38.3333C54.6667 38.3333 55.6667 39.1666 56.6667 39.9999" stroke="white" strokeWidth="3.33333" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M23.3333 49.9999C24.3333 50.8333 25.3333 51.6666 27.5 51.6666C31.6667 51.6666 31.6667 48.3333 35.8333 48.3333C40.1667 48.3333 39.8333 51.6666 44.1667 51.6666C48.3333 51.6666 48.3333 48.3333 52.5 48.3333C54.6667 48.3333 55.6667 49.1666 56.6667 49.9999" stroke="white" strokeWidth="3.33333" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                ),
+              },
+              {
+                title: 'Air Pressure Delivery', desc: 'Delivers the hair growth serum',
+                icon: (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+                    <path d="M0 40C0 17.9086 17.9086 0 40 0C62.0914 0 80 17.9086 80 40C80 62.0914 62.0914 80 40 80C17.9086 80 0 62.0914 0 40Z" fill="#164996" />
+                    <path d="M31.6667 47.1666C35.3333 47.1666 38.3333 44.1166 38.3333 40.4166C38.3333 38.4833 37.3833 36.6499 35.4833 35.0999C33.5833 33.5499 32.15 31.2499 31.6667 28.8333C31.1833 31.2499 29.7667 33.5666 27.85 35.0999C25.9333 36.6333 25 38.4999 25 40.4166C25 44.1166 28 47.1666 31.6667 47.1666Z" stroke="white" strokeWidth="3.33333" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M40.9334 31.0001C42.0796 29.1687 42.8922 27.1485 43.3334 25.0334C44.1667 29.2001 46.6667 33.2001 50 35.8668C53.3334 38.5334 55 41.7001 55 45.0334C55.0095 47.3373 54.3348 49.592 53.0614 51.5119C51.7879 53.4318 49.9731 54.9304 47.8469 55.8176C45.7208 56.7048 43.3791 56.9408 41.1186 56.4956C38.8582 56.0504 36.7809 54.944 35.15 53.3168" stroke="white" strokeWidth="3.33333" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                ),
+              },
+              {
+                title: 'Follicle Stimulation', desc: 'Stimulates thicker, healthier hair growth',
+                icon: (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+                    <path d="M0 40C0 17.9086 17.9086 0 40 0C62.0914 0 80 17.9086 80 40C80 62.0914 62.0914 80 40 80C17.9086 80 0 62.0914 0 40Z" fill="#164996" />
+                    <path d="M31.6666 53.3333H48.3333" stroke="white" strokeWidth="3.33333" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M36.6666 53.3334C45.8333 49.1667 38 42.6667 41.6666 36.6667" stroke="white" strokeWidth="3.33333" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M35.8333 35.6667C37.6666 37.0001 38.8333 39.3334 39.6666 41.8334C36.3333 42.5001 33.8333 42.5001 31.6666 41.3334C29.6666 40.3334 27.8333 38.1667 26.6666 34.3334C31.3333 33.5001 34 34.3334 35.8333 35.6667Z" stroke="white" strokeWidth="3.33333" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M43.5 30.0001C42.2293 31.986 41.5901 34.3103 41.6667 36.6667C44.8333 36.5001 47.1667 35.6667 48.8333 34.3334C50.5 32.6667 51.5 30.5001 51.6667 26.6667C47.1667 26.8334 45 28.3334 43.5 30.0001Z" stroke="white" strokeWidth="3.33333" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                ),
+              },
+            ].map(({ title, desc, icon }) => (
               <div key={title} style={{ textAlign: 'center' }}>
-                <div style={{
-                  width: 80, height: 80, margin: '0 auto 16px', borderRadius: '50%',
-                  background: NAVY, display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 24, fontWeight: 800, color: '#fff',
-                }}>
-                  {i + 1}
+                <div style={{ width: 80, height: 80, margin: '0 auto 16px' }}>
+                  {icon}
                 </div>
-                <h3 style={{ fontSize: 17, fontWeight: 700, color: HEADING, margin: '0 0 8px' }}>{title}</h3>
-                <p style={{ fontSize: 15, color: BODY, margin: 0, lineHeight: 1.6 }}>{desc}</p>
+                <h3 style={{ fontSize: 22, fontWeight: 600, color: HEADING, margin: '0 0 8px' }}>{title}</h3>
+                <p style={{ fontSize: 16, color: BODY, margin: 0, lineHeight: 1.5 }}>{desc}</p>
               </div>
             ))}
           </div>
-          <p style={{ textAlign: 'center', fontSize: 13, color: '#6a7282', fontStyle: 'italic', margin: 0 }}>
+          <p style={{ textAlign: 'center', fontSize: 16, color: '#6a7282', fontStyle: 'italic', margin: 0 }}>
             Results vary by individual and hair loss condition.
           </p>
         </div>
@@ -275,7 +304,7 @@ export default function AlmaTedMetaLP({ heroFormId, bottomFormId }: Props) {
           <h2 style={{ fontSize: 'clamp(22px, 3vw, 32px)', fontWeight: 800, color: HEADING, margin: '0 0 28px' }}>
             Who Is a Good Candidate?
           </h2>
-          <div style={{ textAlign: 'left', display: 'inline-block', marginBottom: 28, maxWidth: 540 }}>
+          <div style={{ textAlign: 'left', display: 'inline-block', marginBottom: 28 }}>
             {[
               'Men or women with thinning hair or hair loss',
               'Individuals seeking non-surgical hair restoration',
@@ -283,27 +312,24 @@ export default function AlmaTedMetaLP({ heroFormId, bottomFormId }: Props) {
               'Patients looking for visible improvement without downtime',
             ].map(item => (
               <div key={item} style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
-                <span style={{
-                  flexShrink: 0, display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                  width: 24, height: 24, background: GOLD, borderRadius: '50%',
-                }}>
-                  <svg width="11" height="9" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M13 1L5 9L1 5" stroke={NAVY} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </span>
-                <span style={{ fontSize: 15, color: HEADING, lineHeight: 1.5 }}>{item}</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#2563EB" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span style={{ fontSize: 18, color: BODY, lineHeight: 1.5 }}>{item}</span>
               </div>
             ))}
           </div>
-          <p style={{ fontSize: 13, color: '#99a1af', margin: 0 }}>
-            A consultation is required to determine candidacy.
-          </p>
+          <div style={{ background: '#eee', border: '1px solid #d4d4d4', borderRadius: 10, padding: '16px 24px', maxWidth: 620, margin: '0 auto' }}>
+            <p style={{ fontSize: 16, color: BODY, margin: 0 }}>
+              A consultation is required to determine candidacy.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Why Choose Us */}
-      <section ref={whyUsReveal.ref} className={whyUsReveal.className} style={{ background: '#eee', paddingBottom: 64 }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '48px 24px 0' }}>
+      <section ref={whyUsReveal.ref} className={whyUsReveal.className} style={{ background: '#eee', padding: '64px 24px' }}>
+        <div style={{ maxWidth: 1152, margin: '0 auto' }}>
           <h2 style={{ fontSize: 'clamp(22px, 2.8vw, 30px)', fontWeight: 800, color: HEADING, textAlign: 'center', margin: '0 0 40px' }}>
             Why Choose Us
           </h2>
@@ -313,7 +339,10 @@ export default function AlmaTedMetaLP({ heroFormId, bottomFormId }: Props) {
               { title: 'Advanced Technology', desc: 'We offer Alma TED®, an FDA-cleared device used worldwide.' },
               { title: 'Personalized Care', desc: 'Every treatment plan begins with a one-on-one consultation.' },
             ].map(({ title, desc }) => (
-              <div key={title} style={{ textAlign: 'center' }}>
+              <div key={title} style={{
+                background: '#fff', borderRadius: 10, textAlign: 'center',
+                padding: '32px 24px', boxShadow: '0 1px 1.5px rgba(0,0,0,0.1), 0 1px 1px rgba(0,0,0,0.1)',
+              }}>
                 <div style={{
                   width: 64, height: 64, margin: '0 auto 16px', borderRadius: '50%',
                   background: NAVY, display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -323,15 +352,18 @@ export default function AlmaTedMetaLP({ heroFormId, bottomFormId }: Props) {
                     <path d="M16 11V17L20 19" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
-                <h3 style={{ fontSize: 17, fontWeight: 700, color: HEADING, margin: '0 0 8px' }}>{title}</h3>
-                <p style={{ fontSize: 15, color: BODY, margin: 0, lineHeight: 1.6 }}>{desc}</p>
+                <h3 style={{ fontSize: 22, fontWeight: 600, color: HEADING, margin: '0 0 12px' }}>{title}</h3>
+                <p style={{ fontSize: 16, color: BODY, margin: 0, lineHeight: 1.5 }}>{desc}</p>
               </div>
             ))}
           </div>
           <img
             src="https://start.phillyhairmd.com/wp-content/uploads/2026/02/Image-Modern-medical-clinic.png"
             alt="Precision Hair Restoration modern medical clinic"
-            style={{ width: '100%', borderRadius: 16, display: 'block', maxHeight: 420, objectFit: 'cover' }}
+            style={{
+              width: '78%', aspectRatio: '900 / 961', margin: '0 auto', borderRadius: 10, display: 'block',
+              objectFit: 'cover', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1)',
+            }}
           />
         </div>
       </section>
