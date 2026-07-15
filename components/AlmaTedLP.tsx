@@ -2,10 +2,11 @@
 import { useState, Suspense } from 'react'
 import GhlForm from '@/components/GhlForm'
 import GclidCapture from '@/components/GclidCapture'
+import { useReveal } from '@/lib/useReveal'
 
 const PHONE = '(267) 214-5624'
 const PHONE_HREF = 'tel:+12672145624'
-const BLUE = '#164996'
+const BLUE = '#003cb5'
 const NAVY = '#15274f'
 const HEADING = '#101828'
 const BODY = '#475467'
@@ -44,6 +45,16 @@ function AlmaReview({ name, text }: { name: string; text: string }) {
 }
 
 export default function AlmaTedLP({ heroFormId, bottomFormId }: Props) {
+  const heroReveal = useReveal<HTMLElement>()
+  const problemReveal = useReveal<HTMLElement>()
+  const whatIsReveal = useReveal<HTMLElement>()
+  const expectReveal = useReveal<HTMLElement>()
+  const rightForYouReveal = useReveal<HTMLElement>()
+  const careLedReveal = useReveal<HTMLElement>()
+  const doctorReveal = useReveal<HTMLElement>()
+  const reviewsReveal = useReveal<HTMLElement>()
+  const bottomFormReveal = useReveal<HTMLElement>()
+
   return (
     <>
       <Suspense fallback={null}><GclidCapture /></Suspense>
@@ -82,7 +93,7 @@ export default function AlmaTedLP({ heroFormId, bottomFormId }: Props) {
       </nav>
 
       {/* Hero */}
-      <section style={{ background: '#fff', padding: '56px 24px 48px' }}>
+      <section ref={heroReveal.ref} className={heroReveal.className} style={{ background: '#fff', padding: '56px 24px 48px' }}>
         <div className="two-col" style={{ maxWidth: 1200, margin: '0 auto', alignItems: 'start', gap: 48 }}>
           {/* Left: heading, CTAs, trust badges, form */}
           <div>
@@ -170,7 +181,7 @@ export default function AlmaTedLP({ heroFormId, bottomFormId }: Props) {
       </section>
 
       {/* Problem */}
-      <section style={{ background: BLUE, padding: '60px 24px', textAlign: 'center' }}>
+      <section ref={problemReveal.ref} className={problemReveal.className} style={{ background: BLUE, padding: '60px 24px', textAlign: 'center' }}>
         <div style={{ maxWidth: 900, margin: '0 auto' }}>
           <h2 style={{ fontSize: 'clamp(22px, 3vw, 34px)', fontWeight: 800, color: '#fff', margin: '0 0 24px', lineHeight: 1.25 }}>
             Concerned About Hair Thinning, But Not Ready for Surgery or Injections?
@@ -185,7 +196,7 @@ export default function AlmaTedLP({ heroFormId, bottomFormId }: Props) {
       </section>
 
       {/* What Is Alma TED */}
-      <section style={{ background: '#eeeeee', padding: '64px 24px' }}>
+      <section ref={whatIsReveal.ref} className={whatIsReveal.className} style={{ background: '#eeeeee', padding: '64px 24px' }}>
         <div className="two-col" style={{ maxWidth: 1100, margin: '0 auto', gap: 60, alignItems: 'center' }}>
           <div>
             <h2 style={{ fontSize: 'clamp(22px, 2.8vw, 30px)', fontWeight: 800, color: HEADING, margin: '0 0 16px' }}>
@@ -219,7 +230,7 @@ export default function AlmaTedLP({ heroFormId, bottomFormId }: Props) {
       </section>
 
       {/* What to Expect */}
-      <section style={{ background: '#fff', paddingBottom: 64 }}>
+      <section ref={expectReveal.ref} className={expectReveal.className} style={{ background: '#fff', paddingBottom: 64 }}>
         <img
           src="https://start.phillyhairmd.com/wp-content/uploads/2026/02/Image-Professional-medical-consultation.png"
           alt="Doctor consulting with patient"
@@ -259,7 +270,7 @@ export default function AlmaTedLP({ heroFormId, bottomFormId }: Props) {
       </section>
 
       {/* Is This Option Right for You */}
-      <section style={{ background: BLUE, padding: '60px 24px', textAlign: 'center' }}>
+      <section ref={rightForYouReveal.ref} className={rightForYouReveal.className} style={{ background: BLUE, padding: '60px 24px', textAlign: 'center' }}>
         <div style={{ maxWidth: 800, margin: '0 auto' }}>
           <h2 style={{ fontSize: 'clamp(22px, 3vw, 32px)', fontWeight: 800, color: '#fff', margin: '0 0 12px' }}>
             Is This Option Right for You?
@@ -294,7 +305,7 @@ export default function AlmaTedLP({ heroFormId, bottomFormId }: Props) {
       </section>
 
       {/* Care Led */}
-      <section style={{ background: '#fff', paddingBottom: 64 }}>
+      <section ref={careLedReveal.ref} className={careLedReveal.className} style={{ background: '#fff', paddingBottom: 64 }}>
         <img
           src="https://start.phillyhairmd.com/wp-content/uploads/2026/02/Image-Healthcare-clinic-interior.png"
           alt="Precision Hair Restoration clinic interior"
@@ -351,7 +362,7 @@ export default function AlmaTedLP({ heroFormId, bottomFormId }: Props) {
       </section>
 
       {/* Doctor Bio */}
-      <section style={{ background: '#fff', padding: '64px 24px', borderTop: '1px solid #E5E7EB' }}>
+      <section ref={doctorReveal.ref} className={doctorReveal.className} style={{ background: '#fff', padding: '64px 24px', borderTop: '1px solid #E5E7EB' }}>
         <div className="two-col" style={{ maxWidth: 1100, margin: '0 auto', gap: 56, alignItems: 'start' }}>
           <div>
             <img
@@ -381,7 +392,7 @@ export default function AlmaTedLP({ heroFormId, bottomFormId }: Props) {
       </section>
 
       {/* Reviews */}
-      <section style={{ background: '#F3F4F6', padding: '64px 24px' }}>
+      <section ref={reviewsReveal.ref} className={reviewsReveal.className} style={{ background: '#F3F4F6', padding: '64px 24px' }}>
         <div className="reviews-grid" style={{ maxWidth: 1200, margin: '0 auto' }}>
           <AlmaReview
             name="Sandra P."
@@ -399,7 +410,7 @@ export default function AlmaTedLP({ heroFormId, bottomFormId }: Props) {
       </section>
 
       {/* Bottom Form */}
-      <section style={{ background: '#000', padding: '64px 24px' }}>
+      <section ref={bottomFormReveal.ref} className={bottomFormReveal.className} style={{ background: '#000', padding: '64px 24px' }}>
         <div className="two-col" style={{ maxWidth: 1100, margin: '0 auto', alignItems: 'start', gap: 48 }}>
           <div>
             <h2 style={{ fontSize: 'clamp(24px, 3vw, 34px)', fontWeight: 800, color: '#fff', margin: '0 0 16px' }}>
