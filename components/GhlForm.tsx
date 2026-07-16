@@ -94,7 +94,10 @@ export default function GhlForm({
         data-form-id={formId}
         title={formName || formId}
       />
-      <Script src="https://link.msgsndr.com/js/form_embed.js" strategy="afterInteractive" />
+      {/* form_embed.js intentionally NOT loaded: it crashes ("iFrame does not
+          exist") when React swaps the iframe src to inject params, and its failed
+          handshake leaves the GHL widget invisible. iframe-resizer above does the
+          resize job; params are injected into the src directly. */}
     </>
   )
 }
