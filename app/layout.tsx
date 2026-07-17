@@ -1,5 +1,6 @@
 import DniSwap from '@/components/DniSwap'
 import Script from 'next/script'
+import Fab from '@/components/fab/Fab'
 import './globals.css'
 
 const OG_IMAGE = 'https://phillyhairmd.com/wp-content/uploads/phillyhairmd-og.png'
@@ -42,6 +43,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
       </head>
       <body>
+        <Fab client="precision" />
         <DniSwap />
         <noscript>
           <iframe
