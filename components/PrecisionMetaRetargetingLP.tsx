@@ -114,7 +114,7 @@ export default function PrecisionMetaRetargetingLP({ heroFormId, bottomFormId, v
         </a>
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
           <a href="#hero-form" style={{ background: LIGHT_BTN_BG, color: '#000', fontWeight: 700, borderRadius: 24, textDecoration: 'none', letterSpacing: '0.04em', whiteSpace: 'nowrap', padding: '10px 20px', fontSize: 14 }}>
-            CHECK ELIGIBILITY
+            BOOK A CONSULT
           </a>
           <a href={PHONE_HREF} style={{ color: '#fff', fontWeight: 600, textDecoration: 'none', whiteSpace: 'nowrap' }}>{PHONE}</a>
         </div>
@@ -124,9 +124,6 @@ export default function PrecisionMetaRetargetingLP({ heroFormId, bottomFormId, v
       <section ref={heroReveal.ref} className={heroReveal.className} style={{ background: '#fff', padding: '56px 24px 48px' }}>
         <div className="two-col" style={{ maxWidth: 1200, margin: '0 auto', alignItems: 'start', gap: 48 }}>
           <div>
-            <span style={{ display: 'inline-block', background: '#eef4fb', color: NAVY, fontSize: 12, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', padding: '6px 14px', borderRadius: 40, marginBottom: 18 }}>
-              {isArtas ? 'ARTAS® Robotic Hair Restoration' : 'Still Considering Hair Restoration?'}
-            </span>
             <h1 style={{ fontSize: 'clamp(28px, 3.5vw, 42px)', fontWeight: 700, color: HEADING, lineHeight: 1.2, margin: '0 0 16px' }}>
               {isArtas
                 ? 'Worried about surgery or shaving? Get clarity in 60 seconds.'
@@ -145,7 +142,7 @@ export default function PrecisionMetaRetargetingLP({ heroFormId, bottomFormId, v
                 Or call {PHONE}
               </a>
             </div>
-            <img src={isArtas ? '/img/m/artas-device.webp' : '/img/m/rt-hero.webp'} alt={isArtas ? 'ARTAS robotic hair restoration system' : 'Hair restoration consultation'} style={{ width: '100%', borderRadius: 16, display: 'block', marginBottom: 8 }} />
+            <img src={isArtas ? '/img/m/artas-device.webp' : '/img/m/rt-hero.webp'} alt={isArtas ? 'ARTAS hair restoration system' : 'Hair restoration consultation'} style={{ width: '100%', borderRadius: 16, display: 'block', marginBottom: 8 }} />
             <p style={{ textAlign: 'center', fontSize: 12, color: '#99a1af', margin: 0 }}>Individual results vary</p>
           </div>
 
@@ -258,10 +255,15 @@ export default function PrecisionMetaRetargetingLP({ heroFormId, bottomFormId, v
               isArtas ? 'ARTAS®-assisted graft selection consistency (when appropriate)' : 'Precise graft selection consistency (when appropriate)',
               'Donor preservation-focused planning',
               'Natural growth pattern placement strategy',
-              'Technique',
-              'Shaving requirements',
-              'Expected outcome',
             ].map(it => (
+              <div key={it} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+                <Check /><span style={{ fontSize: 15, color: BODY, lineHeight: 1.5 }}>{it}</span>
+              </div>
+            ))}
+          </div>
+          <p style={{ fontSize: 15, color: BODY, fontWeight: 600, margin: '0 0 10px' }}>Consultation determines:</p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 24 }}>
+            {['Technique', 'Shaving requirements', 'Expected outcome'].map(it => (
               <div key={it} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
                 <Check /><span style={{ fontSize: 15, color: BODY, lineHeight: 1.5 }}>{it}</span>
               </div>

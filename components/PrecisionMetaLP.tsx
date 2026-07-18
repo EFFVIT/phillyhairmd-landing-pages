@@ -72,9 +72,6 @@ export default function PrecisionMetaLP({ heroFormId, bottomFormId }: Props) {
       <section ref={heroReveal.ref} className={heroReveal.className} style={{ background: '#fff', padding: '56px 24px 48px' }}>
         <div className="two-col" style={{ maxWidth: 1200, margin: '0 auto', alignItems: 'start', gap: 48 }}>
           <div>
-            <span style={{ display: 'inline-block', background: '#eef4fb', color: NAVY, fontSize: 12, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', padding: '6px 14px', borderRadius: 40, marginBottom: 18 }}>
-              Private Medical Consultation
-            </span>
             <h1 style={{ fontSize: 'clamp(28px, 3.5vw, 42px)', fontWeight: 700, color: HEADING, lineHeight: 1.2, margin: '0 0 16px' }}>
               See If Hair Restoration Is Right For You&mdash;Before You Commit to Surgery
             </h1>
@@ -213,9 +210,6 @@ export default function PrecisionMetaLP({ heroFormId, bottomFormId }: Props) {
             <h2 style={{ fontSize: 'clamp(24px, 3vw, 34px)', fontWeight: 700, color: HEADING, margin: '0 0 16px', lineHeight: 1.2 }}>
               If You&apos;re Going to Do This, Do It Informed
             </h2>
-            <p style={{ fontSize: 15, color: BODY, margin: '0 0 20px', lineHeight: 1.7 }}>
-              Request your private evaluation with Precision Hair Restoration&apos;s medical team. No obligation, no pressure&mdash;just a clear, honest picture of your options.
-            </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               <a href={PHONE_HREF} style={{ color: HEADING, fontWeight: 600, fontSize: 15, textDecoration: 'none' }}>{PHONE}</a>
               <a href="mailto:visit@phillyhairmd.com" style={{ color: HEADING, fontWeight: 600, fontSize: 15, textDecoration: 'none' }}>visit@phillyhairmd.com</a>
