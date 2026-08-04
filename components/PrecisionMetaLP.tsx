@@ -101,8 +101,8 @@ export default function PrecisionMetaLP({ heroFormId, bottomFormId }: Props) {
 
           {/* Right: form card + results image */}
           <div>
-            <div id="hero-form" style={{ background: '#F9FAFB', border: '1px solid #E5E7EB', borderRadius: 16, padding: '24px', marginBottom: 20 }}>
-              <p style={{ fontSize: 14, fontWeight: 700, color: HEADING, margin: '0 0 12px' }}>Every treatment plan is customized&mdash;no templates, no shortcuts.</p>
+            <div id="hero-form" style={{ background: '#000', border: '1px solid #E5E7EB', borderRadius: 16, padding: '24px', marginBottom: 20 }}>
+              <p style={{ fontSize: 14, fontWeight: 700, color: '#fff', margin: '0 0 12px' }}>Every treatment plan is customized&mdash;no templates, no shortcuts.</p>
               <GhlForm formId={heroFormId} height={420} formName="Banner Form - META LEAD GEN" />
             </div>
             <img src="/img/m/meta-hero.webp" alt="Precision Hair Restoration results" style={{ width: '100%', borderRadius: 16, display: 'block', marginBottom: 8 }} />
