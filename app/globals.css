@@ -121,3 +121,22 @@ button { font-family: inherit; }
     white-space: nowrap !important;
   }
 }
+
+/* ── Mobile top-bar overflow, remaining variants ──
+   The rule above only reached the PrecisionLP header. The Meta LPs use a
+   taller <header>, and the Alma TED LPs use a <nav> with a 279px wordmark,
+   so /c/alma-ted, /m/alma-ted, /m/meta, /m/meta-retargeting and
+   /m/meta-retargeting-artas still scrolled ~148px sideways. Cap the logo
+   and let the CTA cluster wrap instead of hiding anything. */
+@media (max-width: 767px) {
+  header, nav { max-width: 100vw !important; }
+  header *, nav * { min-width: 0 !important; }
+  header > div, nav > div {
+    flex-wrap: wrap !important;
+    row-gap: 6px !important;
+    column-gap: 10px !important;
+  }
+  header img, nav img { max-width: 42vw !important; height: auto !important; }
+  header a, nav a { white-space: normal !important; }
+  nav > div { padding-left: 14px !important; padding-right: 14px !important; }
+}
