@@ -81,3 +81,43 @@ button { font-family: inherit; }
 @media (max-width: 480px) {
   .steps-grid { grid-template-columns: 1fr; }
 }
+
+/* ── Mobile copy left-align (requested by Joe 2026-08-14) ──
+   Copy reads left-aligned on phones instead of centred. Targets text tags
+   only, so buttons, star ratings, step icons and other controls keep the
+   alignment they were designed with. Header nav is exempt. */
+@media (max-width: 767px) {
+  p, h1, h2, h3, h4, h5, h6, li, blockquote, figcaption {
+    text-align: left !important;
+  }
+  header p, header h1, header h2, header h3, header h4, header h5, header h6 {
+    text-align: center !important;
+  }
+}
+
+/* ── Mobile header overflow fix ──
+   The sticky header laid out logo + CTA + phone as a single nowrap flex row
+   measuring 653px, so every route scrolled sideways by ~223px on a 390px
+   screen and the phone number sat off-screen. Compact the row so all three
+   stay reachable without hiding any of them. */
+@media (max-width: 767px) {
+  header > div {
+    padding: 0 16px !important;
+    height: 68px !important;
+    gap: 10px !important;
+  }
+  header > div > img { height: 30px !important; }
+  header > div > div { gap: 10px !important; min-width: 0 !important; }
+  header > div > div > a:first-child {
+    font-size: 0.64rem !important;
+    padding: 9px 12px !important;
+    letter-spacing: 0.03em !important;
+    white-space: normal !important;
+    line-height: 1.15 !important;
+    text-align: center !important;
+  }
+  header > div > div > a:last-child {
+    font-size: 0.8rem !important;
+    white-space: nowrap !important;
+  }
+}
