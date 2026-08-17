@@ -111,9 +111,8 @@ export const CONSULT = {
    TO FIX: mint a PIT for this sub-account with locations/customFields readonly,
    then regenerate this map FROM THE API — never by copying RHRLI's. */
 export const CONSULT_FIELD_MAP: Record<string, string> = {
-  /* The click id. This sub-account spells it `contact.gclidof` — the spelling
-     differs per client (gclidof / gclid_custom), which is exactly why this is
-     seeded from the API and never copied from another client (H-41). */
+  /* This sub-account spells the click id `contact.gclidof`. The spelling differs per
+     client, which is why this is read from the API and never copied (H-41). */
   gclid: 'contact.gclidof',
   wbraid: 'contact.wbraid',
   gbraid: 'contact.gbraid',
@@ -127,5 +126,5 @@ export const CONSULT_FIELD_MAP: Record<string, string> = {
      keyword, matchtype, fbclid, msclkid, campaignid, adgroupid.
      Captured on the page and dropped at the CRM boundary rather than written to a
      guessed key — a PUT with an unresolvable fieldKey returns 200 and silently
-     discards the value, which reads as working (H-41).  */
+     discards the value, which reads as working (H-41). */
 }
