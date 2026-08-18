@@ -26,16 +26,23 @@ const GA_ID = 'G-VVX8GPKB58'
    one for GA4. Server-side delivery would not launder it either (H-32) — the
    restriction follows the data, not the pipe.
 
-   SCOPE IS DELIBERATELY NARROW: this suppresses the tag on the consult route
-   ONLY. It does not change any existing page. The wider question — that this
-   app also runs GA4 on its other /c/ and /m/ consult and evaluation form
-   pages, which are the same shape — is a real finding and is Joe's call, with
-   the RHRLI precedent being that he directed GTM removed from the landing
-   pages fleet-wide on 2026-08-15. Do not widen this gate without that call.
+   Gate widened 2026-08-18 at mroberts direction to cover all remaining
+   health-intent intake routes confirmed firing GA4 page_view hits:
+   /c/evaluation, /c/hair-restoration, and the start.phillyhairmd.com
+   form fleet. Same rationale as /c/consult — BAA-uncoverable, restriction
+   follows the data not the pipe.
 
    Suppressing a tag on a medical page can only ever reduce exposure, so this
    edit cannot hide a violation. */
-const HEALTH_INTENT_ROUTES = ['/c/consult']
+const HEALTH_INTENT_ROUTES = [
+  '/c/consult',
+  '/c/evaluation',
+  '/c/hair-restoration',
+  '/hair-restoration-google',
+  '/alma-google',
+  '/artas-google-lead-gen',
+  '/neograft-google-lead-gen',
+]
 const isHealthIntent = (p: string) =>
   HEALTH_INTENT_ROUTES.some((r) => p === r || p.startsWith(r + '/'))
 
