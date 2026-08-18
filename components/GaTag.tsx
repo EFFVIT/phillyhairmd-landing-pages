@@ -1,6 +1,7 @@
 'use client'
 import Script from 'next/script'
 import { usePathname } from 'next/navigation'
+import { useEffect } from 'react'
 
 /* GA4 ONLY. GTM-TG4Z4QP5 was removed from this landing page app on 2026-08-15 at
    Joe's direction. Measured live that day it delivered Microsoft Clarity session
@@ -28,9 +29,14 @@ const GA_ID = 'G-VVX8GPKB58'
 
    Gate widened 2026-08-18 at mroberts direction to cover all remaining
    health-intent intake routes confirmed firing GA4 page_view hits:
-   /c/evaluation, /c/hair-restoration, and the start.phillyhairmd.com
-   form fleet. Same rationale as /c/consult — BAA-uncoverable, restriction
-   follows the data not the pipe.
+   /c/evaluation, /c/hair-restoration, /c/hair-transplant, /c/alma-ted,
+   and the start.phillyhairmd.com form fleet. Same rationale as /c/consult
+   — BAA-uncoverable, restriction follows the data not the pipe.
+
+   SPA navigation hardening added same date: send_page_view:false +
+   onLoad-fired initial hit + useEffect guard prevents gtag.js (once
+   loaded on a non-gated page) from auto-firing on health-intent routes
+   when a user navigates within the same session.
 
    Suppressing a tag on a medical page can only ever reduce exposure, so this
    edit cannot hide a violation. */
@@ -38,6 +44,8 @@ const HEALTH_INTENT_ROUTES = [
   '/c/consult',
   '/c/evaluation',
   '/c/hair-restoration',
+  '/c/hair-transplant',
+  '/c/alma-ted',
   '/hair-restoration-google',
   '/alma-google',
   '/artas-google-lead-gen',
@@ -46,16 +54,45 @@ const HEALTH_INTENT_ROUTES = [
 const isHealthIntent = (p: string) =>
   HEALTH_INTENT_ROUTES.some((r) => p === r || p.startsWith(r + '/'))
 
+/* Gtag type shim — no global declaration to avoid collisions with Next's own type. */
+type GtagFn = (...args: unknown[]) => void
+const win = () => (typeof window === 'undefined' ? null : (window as unknown as { gtag?: GtagFn }))
+
 export default function GaTag() {
   const pathname = usePathname() || ''
+
+  /* SPA navigation guard: when the user moves between pages within the same
+     browser session, gtag.js stays loaded even if this component returns null.
+     This effect fires a manual page_view for every non-health-intent route change
+     (initial load covered by onLoad below) and explicitly skips health-intent
+     routes — so no page_view fires for /c/consult, /c/evaluation, etc. even if
+     the user navigated there from a tracked page. */
+  useEffect(() => {
+    if (isHealthIntent(pathname)) return
+    const w = win()
+    /* Skip the very first render — onLoad on ga4-src fires the initial page_view
+       once gtag.js is ready. Subsequent pathname changes are SPA navigations. */
+    if (typeof w?.gtag !== 'function') return
+    w.gtag('event', 'page_view', { page_path: pathname })
+  }, [pathname])
+
   if (isHealthIntent(pathname)) return null
 
   return (
     <>
+      {/* onLoad fires after gtag.js + the inline config have both run.
+          send_page_view:false suppresses the automatic initial hit; we fire it
+          here instead so the timing is explicit and controlled. */}
       <Script
         id="ga4-src"
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+        onLoad={() => {
+          const w = win()
+          if (typeof w?.gtag === 'function') {
+            w.gtag('event', 'page_view', { page_path: pathname })
+          }
+        }}
       />
       <Script id="ga4-config" strategy="afterInteractive">
         {`window.dataLayer=window.dataLayer||[];
@@ -63,7 +100,7 @@ function gtag(){dataLayer.push(arguments);}
 window.gtag=gtag;
 gtag('js', new Date());
 gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'granted'});
-gtag('config','${GA_ID}',{allow_google_signals:false,allow_ad_personalization_signals:false,anonymize_ip:true});`}
+gtag('config','${GA_ID}',{allow_google_signals:false,allow_ad_personalization_signals:false,anonymize_ip:true,send_page_view:false});`}
       </Script>
     </>
   )
