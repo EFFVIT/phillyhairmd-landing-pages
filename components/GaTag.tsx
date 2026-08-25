@@ -34,10 +34,24 @@ const GA_ID = 'G-VVX8GPKB58'
 
    Suppressing a tag on a medical page can only ever reduce exposure, so this
    edit cannot hide a violation. */
+/* COLLAPSED TO THE /c PREFIX 2026-08-25, on Joe's call during the fleet sweep.
+
+   The enumerated list this replaces (Mike, 2026-08-18) was correct for the
+   routes that existed when it was written and had already gone stale: it named
+   /c/consult, /c/evaluation and /c/hair-restoration, while the app also serves
+   /c/alma-ted and /c/hair-transplant. Both were verified FIRING GA4 live on
+   2026-08-25, on health-intent pages, because they were simply not on the list.
+   That is H-45 exactly, and it is the argument for a prefix over a list: every
+   /c route in this app mounts a consult form, so the prefix and the
+   health-intent set are the same set, and adding a route no longer requires
+   remembering this file.
+
+   THE FOUR LEGACY NON-/c ROUTES BELOW ARE DELIBERATELY KEPT. They sit outside
+   /c, so collapsing to the prefix alone would silently re-expose them, which
+   would make this edit a loosening wearing the costume of a simplification
+   (H-38). */
 const HEALTH_INTENT_ROUTES = [
-  '/c/consult',
-  '/c/evaluation',
-  '/c/hair-restoration',
+  '/c',
   '/hair-restoration-google',
   '/alma-google',
   '/artas-google-lead-gen',
